@@ -17,8 +17,7 @@ repositories {
 
 dependencies {
     // Use JUnit Jupiter for testing.
-    testImplementation libs.junit.jupiter
-
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
     // This dependency is used by the application.
@@ -40,4 +39,16 @@ application {
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+}
+
+test {
+    testLogging {
+        events "passed", "skipped", "failed"
+
+        showExceptions true
+        exceptionFormat "full"
+        showCauses true
+        showStackTraces false
+        showStandardStreams false
+    }
 }
